@@ -1,3 +1,4 @@
 .env
 .venv
 .docker-volumes
+__pycache__/**

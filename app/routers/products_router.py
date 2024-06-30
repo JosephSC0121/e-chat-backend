@@ -1,7 +1,6 @@
 
 from fastapi import APIRouter, HTTPException, Depends
 from models.database import  Session, get_db
-from schemas.product import ProductBase
 from schemas.chat_request import ChatRequest
 from openai import OpenAI
 from models.product import Product
@@ -24,10 +23,9 @@ def chat_bot(request: ChatRequest, db: Session = Depends(get_db)):
     try:
 
         data = db.query(Product).all()
-
         if data:
             product_info = ", ".join([f"{p.name} ({p.type})" for p in data])
-            system_message = f"You are an e-commerce assistant who knows these products: {product_info}"
+            system_message = f"You are an e-commerce 'makers' assistant who knows about these products: {product_info}"
         else:
             system_message = "You are an e-commerce assistant."
 

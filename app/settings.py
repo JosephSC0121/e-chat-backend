@@ -4,8 +4,6 @@ import os
 
 load_dotenv()
 
-# DATABASE
-
 DB_USER = os.getenv("DB_USER")
 DB_HOST = os.getenv("DB_HOST")
 DB_PASSWORD =os.getenv("DB_PASSWORD")
