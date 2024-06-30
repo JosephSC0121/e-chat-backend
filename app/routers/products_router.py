@@ -25,12 +25,12 @@ def chat_bot(request: ChatRequest, db: Session = Depends(get_db)):
         data = db.query(Product).all()
         if data:
             product_info = ", ".join([f"{p.name} ({p.type})" for p in data])
-            system_message = f"You are an e-commerce 'makers' assistant who knows about these products: {product_info}"
+            system_message = f"You are an AI assistant for Makers Tech, a technology ecommerce company. Your task is to assist users through a graphical interface by providing information about the current inventory, features, and prices of available products. Your responses should be personalized and based on real-time inventory data. who knows about these products: {product_info}"
         else:
             system_message = "You are an e-commerce assistant."
 
         completion = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4",
             messages=[
                 {"role": "system", "content": system_message},
                 {"role": "user", "content": request.question}
